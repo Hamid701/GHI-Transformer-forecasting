@@ -86,12 +86,6 @@ Contributions are welcome! Please follow these steps:
 2. Create a new branch for your feature or bugfix.
 3. Submit a pull request with a detailed description of your changes.
 
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-## Future Work
-
 ## Future Work
 
 - **Add Exogenous Variables**: Incorporate additional input features such as wind speed, temperature, and humidity to improve model accuracy.
@@ -103,4 +97,8 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 The Transformer architecture is based on the paper "Attention is All You Need".
 
 The dataset is provided by the Copernicus Atmosphere Monitoring Service (CAMS).
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
