@@ -23,7 +23,7 @@ You can check the white preprint paper here:
 
 ## Data Flow Diagram
 
-![Dashboard Demo](visualization/data_flow.png)
+![Dashboard Demo](visualization/data_flow.png){: width="400"}
 
 ---
 ## Results
@@ -82,7 +82,7 @@ Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050)
 
 Here's a quick demo of the GHI Forecasting Dashboard:
 
-![Dashboard Demo](visualization/Dashboard.gif)
+![Dashboard Demo](visualization/Dashboard.gif){: width="400"}
 
 ## Contributing
 
@@ -106,4 +106,3 @@ The dataset is provided by the Copernicus Atmosphere Monitoring Service (CAMS).
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
