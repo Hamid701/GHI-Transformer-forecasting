@@ -6,10 +6,11 @@ This study implements advanced time series forecasting models to predict **Globa
 historical data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
 with a focus on parallelization and handling long-term dependencies in time series data.
 
+---
+
 ## Publication
 You can check the white preprint paper here:
 - **Transformer-Based Global Horizontal Irradiance Forecasting: A Multi-Head Attention Approach for Hour-Ahead Predictions**  
-  Published on ResearchGate.  
   [Read the paper here](https://www.researchgate.net/publication/388350500_Transformer-Based_Global_Horizontal_Irradiance_Forecasting_A_Multi-Head_Attention_Approach_for_Hour-Ahead_Predictions)
 
 ---
@@ -22,8 +23,7 @@ You can check the white preprint paper here:
 
 ## Data Flow Diagram
 
-<img src="visualization/data_flow.png" alt="Dashboard Demo" width="400"/>
-
+<img src="visualization/data_flow.png" alt="Dashboard Demo" width="400" height="600"/>
 
 ---
 ## Results
@@ -40,6 +40,7 @@ The project includes an interactive dashboard built with **Dash** and **Plotly**
 - **Model Comparison**: Compare predictions from Transformer and LSTM.
 - **Time Range Slider**: Focus on specific time periods.
 - **Metrics Display**: Real-time RMSE, nRMSE, MAE and MASE for selected models.
+- **Download**: Download the predictions to your local device as .csv file.
 
 ---
 
@@ -82,7 +83,7 @@ Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050)
 
 Here's a quick demo of the GHI Forecasting Dashboard:
 
-<img src="visualization/Dashboard.gif" alt="Dashboard Demo" width="400"/>
+<img src="visualization/Dashboard.gif" alt="Dashboard Demo" width="600"/>
 
 
 ## Contributing
