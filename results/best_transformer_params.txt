@@ -1,0 +1,6 @@
+Best Hyperparameters for Transformer:
+d_model: 98
+num_heads: 7
+dff: 199
+num_layers: 4
+dropout_rate: 0.29345990672125905

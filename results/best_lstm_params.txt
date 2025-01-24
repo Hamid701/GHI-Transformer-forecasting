@@ -1,0 +1,4 @@
+Best Hyperparameters for LSTM:
+units: 128
+dropout_rate: 0.165350545318832
+learning_rate: 0.03611796032271893
