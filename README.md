@@ -2,45 +2,17 @@
 
 ## Overview
 
-This project implements advanced time series forecasting models to predict **Global Horizontal Irradiance (GHI)** using
-historical solar radiation data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
+
+This study implements advanced time series forecasting models to predict **Global Horizontal Irradiance (GHI)** using
+historical data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
 with a focus on parallelization and handling long-term dependencies in time series data.
 ---
 
 ## Publication
-This project is based on the following research paper:
-- **Deep Attention Neural Network for Forecasting Different Horizons of Global Solar Radiation**  
+You can check the white preprint paper here:
+- **Transformer-Based Global Horizontal Irradiance Forecasting: A Multi-Head Attention Approach for Hour-Ahead Predictions**  
   Published on ResearchGate.  
   [Read the paper here](https://www.researchgate.net/publication/388350500_Transformer-Based_Global_Horizontal_Irradiance_Forecasting_A_Multi-Head_Attention_Approach_for_Hour-Ahead_Predictions)
-
----
-
-## Project Structure
-
-GHI-Transformer-forecasting/
-├── data/
-│ ├── GHI_data.csv # Raw data
-│ └── processed/ # Processed data (auto-generated)
-├── models/ # Saved models (auto-generated)
-├── results/ # Evaluation results (auto-generated)
-├── visualization/ # Saved plots (auto-generated)
-├── src/
-│ ├── __init__.py # Make src a Python package
-│ ├── data_loader.py # Data loading and preprocessing
-│ ├── models.py # Model definitions
-│ ├── evaluate.py # Evaluation metrics
-│ ├── visualize.py # Visualization functions
-│ ├── tune_lstm.py # LSTM Hyperparameter tuning script
-│ └── tune_transformer.py # Transformer Hyperparameter tuning script
-├── tests/ # Unit tests
-│ ├── __init__.py
-│ ├── test_data_loading.py
-│ └── test_models.py
-├── requirements.txt # Python dependencies
-├── README.md # Project documentation
-├── LICENSE # Open-source license
-├── .gitignore # Files to ignore in Git
-└── main.py # Main script to run the project
 
 ---
 
@@ -49,6 +21,7 @@ GHI-Transformer-forecasting/
 - **LSTM (Long Short-Term Memory)**: A recurrent neural network designed to capture long-term dependencies.
 
 ---
+## Results
 
 | Model        | RMSE  | nRMSE  | MAE   | MASE  |
 |--------------|-------|--------|-------|-------|
@@ -82,12 +55,12 @@ The project includes an interactive dashboard built with **Dash** and **Plotly**
 
 ## Usage
 
-**1. Run the the script:**
+1. Run the the script:
     ```bash
     python src/main.py
     ```
 
-**1. Outcome:**
+2. Outcome:
 
 - Evaluate the models on the test set.
 
@@ -95,7 +68,7 @@ The project includes an interactive dashboard built with **Dash** and **Plotly**
 
 - Generate an interactive plot in [forecast_plot.html](visualization/forecast_plot.html).
 
-**3. Run the dashboard locally:**
+3. Run the dashboard locally:
     ```bash
     python src/dashboard.py
     ```
