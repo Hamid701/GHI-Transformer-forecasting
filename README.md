@@ -1,8 +1,7 @@
 # GHI Transformer Forecasting
 
 ## Overview
-
-
+---
 This study implements advanced time series forecasting models to predict **Global Horizontal Irradiance (GHI)** using
 historical data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
 with a focus on parallelization and handling long-term dependencies in time series data.
@@ -19,6 +18,12 @@ You can check the white preprint paper here:
 ## Models Implemented
 - **Transformer**: A multi-head attention-based model for parallelized time series forecasting.
 - **LSTM (Long Short-Term Memory)**: A recurrent neural network designed to capture long-term dependencies.
+
+---
+
+## Data Flow Diagram
+
+![Dashboard Demo](visualization/data_flow.png)
 
 ---
 ## Results
