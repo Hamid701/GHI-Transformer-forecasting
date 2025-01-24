@@ -1,8 +1,4 @@
 # .gitignore
-data/raw/
-data/processed/
-models/
-visualization/
 .env
 __pycache__/
 *.pyc
