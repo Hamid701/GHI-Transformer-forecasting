@@ -23,7 +23,7 @@ You can check the white preprint paper here:
 
 ## Data Flow Diagram
 
-<img src="visualization/data_flow.png" alt="Dashboard Demo" width="400" height="600"/>
+<img src="visualization/data_flow.png" alt="Dashboard Demo" width="300" height="500"/>
 
 ---
 ## Results
