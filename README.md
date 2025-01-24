@@ -25,7 +25,7 @@ GHI-Transformer-forecasting/
 ├── results/ # Evaluation results (auto-generated)
 ├── visualization/ # Saved plots (auto-generated)
 ├── src/
-│ ├── init.py # Make src a Python package
+│ ├── __init__.py # Make src a Python package
 │ ├── data_loader.py # Data loading and preprocessing
 │ ├── models.py # Model definitions
 │ ├── evaluate.py # Evaluation metrics
@@ -33,7 +33,7 @@ GHI-Transformer-forecasting/
 │ ├── tune_lstm.py # LSTM Hyperparameter tuning script
 │ └── tune_transformer.py # Transformer Hyperparameter tuning script
 ├── tests/ # Unit tests
-│ ├── init.py
+│ ├── __init__.py
 │ ├── test_data_loading.py
 │ └── test_models.py
 ├── requirements.txt # Python dependencies
