@@ -1,11 +1,10 @@
 # GHI Transformer Forecasting
 
 ## Overview
----
+
 This study implements advanced time series forecasting models to predict **Global Horizontal Irradiance (GHI)** using
 historical data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
 with a focus on parallelization and handling long-term dependencies in time series data.
----
 
 ## Publication
 You can check the white preprint paper here:
@@ -23,7 +22,8 @@ You can check the white preprint paper here:
 
 ## Data Flow Diagram
 
-![Dashboard Demo](visualization/data_flow.png){: width="400"}
+<img src="visualization/data_flow.png" alt="Dashboard Demo" width="400"/>
+
 
 ---
 ## Results
@@ -82,7 +82,8 @@ Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050)
 
 Here's a quick demo of the GHI Forecasting Dashboard:
 
-![Dashboard Demo](visualization/Dashboard.gif){: width="400"}
+<img src="visualization/Dashboard.gif" alt="Dashboard Demo" width="400"/>
+
 
 ## Contributing
 
