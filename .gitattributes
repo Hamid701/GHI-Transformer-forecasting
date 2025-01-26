@@ -1,0 +1,2 @@
+# Force Python to be the primary language for all .py files
+*.py linguist-language=Python
