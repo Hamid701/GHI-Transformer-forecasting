@@ -25,7 +25,7 @@ You can check the white preprint paper here:
 
 <img src="visualization/data_flow.png" alt="Dashboard Demo" width="300" height="500"/>
 
----
+--- 
 ## Results
 
 | Model        | RMSE  | nRMSE  | MAE   | MASE  |
