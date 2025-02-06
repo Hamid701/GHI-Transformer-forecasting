@@ -1,10 +1,11 @@
 # GHI Transformer Forecasting
 
 ## Overview
-
+Due to global warming, the world is seeking to use more renewable energy. In this study, we focus on solar energy. The integration of solar energy into electricity networks requires reliable forecast information of solar resources enabling it to quantify the available energy and allowing it to optimally manage the transition between intermittent and conventional energies. Recurrent Neural Networks (RNN) powered with Long Short-Term Memory (LSTM) units, and convolutional Neural Networks (CNN) have achieved state of the art in Photovoltaic output and solar radiation forecasting tasks. But these recurrent models face the parallelization problem during training because of their sequential nature, which holds problems memorizing long-term dependencies. To solve this problem, for the first time, we introduce a novel approach for Global Horizontal radiation (GHI) forecasting, which is based on the multi-head attention mechanism used recently in language translation tasks. This approach works by using self-attention mechanisms to learn long and short-term dependencies from time series data in a parallel mode. Using hourly GHI data in different regions, we demonstrate that the forecasting results for different horizons produced by our approach show significant performance improvements over existing benchmark models.
+## Objectif
 This study implements advanced time series forecasting models to predict **Global Horizontal Irradiance (GHI)** using
 historical data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
-with a focus on parallelization and handling long-term dependencies in time series data.
+which focus on parallelization and handling long-term dependencies in time series data.
 
 ---
 
