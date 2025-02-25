@@ -23,16 +23,20 @@ You can check the white preprint paper here:
 
 ## Data Flow Diagram
 
-<img src="visualization/data_flow.png" alt="Dashboard Demo" width="300" height="500"/>
+<img src="visualization/data_flow.png" alt="Data flow" width="300" height="500"/>
 
 --- 
 ## Results
 
-| Model        | RMSE  | nRMSE  | MAE   | MASE  |
-|--------------|-------|--------|-------|-------|
-| Transformer  | 15.58 | 0.1135 | 9.22  | 0.19  |
-| LSTM         | 17.53 | 0.1276 | 15.03 | 0.32  |
+Evaluation Metrics:
+Model        | RMSE     | nRMSE    | MAE      | MASE    
+-------------------------------------------------------
+Transformer  | 12.40    | 0.0902   | 7.41     | 0.16    
+LSTM         | 15.54    | 0.1131   | 10.04    | 0.21 
 
+<img src="visualization\Model_Performance_Comparison.png" alt="Model Performance Comparison" width="600"/>
+
+Other models were developed on R and not added to this repository.
 ---
 
 ## Interactive Visualizations
@@ -70,9 +74,9 @@ The project includes an interactive dashboard built with **Dash** and **Plotly**
 
 - Evaluate the models on the test set.
 
-- Save metrics to [metrics.txt](results/metrics.txt).
+- Save metrics to [metrics_20250211_124625.txt](results\metrics_20250211_124625.txt).
 
-- Generate an interactive plot in [forecast_plot.html](visualization/forecast_plot.html).
+- Generate an interactive plot in [forecast_plot_20250211_124625.html](visualization\forecast_plot_20250211_124625.html).
 
 3. Run the dashboard locally:
     ```bash
@@ -83,7 +87,10 @@ Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050)
 
 Here's a quick demo of the GHI Forecasting Dashboard:
 
-<img src="visualization/Dashboard.gif" alt="Dashboard Demo" width="600"/>
+<video width="600" controls>
+  <source src="visualization\Dash-Preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
 ## Contributing

@@ -52,7 +52,11 @@ def build_transformer(
     outputs = tf.keras.layers.Dense(1)(x[:, -1, :])
 
     model = tf.keras.Model(inputs=inputs, outputs=outputs)
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss="mse")
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate),
+        loss="mse",
+        metrics=["mae", tf.keras.metrics.RootMeanSquaredError(name="rmse")],
+    )
     return model
 
 
@@ -69,5 +73,9 @@ def build_lstm(window_size, units=128, dropout_rate=0.1702, learning_rate=0.0164
             tf.keras.layers.Dense(1),
         ]
     )
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate), loss="mse")
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate),
+        loss="mse",
+        metrics=["mae", tf.keras.metrics.RootMeanSquaredError(name="rmse")],
+    )
     return model

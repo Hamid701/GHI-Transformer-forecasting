@@ -18,44 +18,94 @@ sys.path.append(str(project_root))
 from src.evaluate import calculate_metrics
 
 
+def find_model_file(model_type):
+    """Find model file with flexible naming"""
+    models_dir = project_root / "models"
+    if not models_dir.exists():
+        raise FileNotFoundError(f"Models directory not found at {models_dir}")
+
+    # Look for model directories first
+    model_dirs = list(models_dir.glob(f"*{model_type}_model_*"))
+    if model_dirs:
+        model_dir = sorted(model_dirs)[-1]  # Get the latest directory
+        return model_dir
+
+    # If no directories found, look for direct .h5 files
+    model_files = list(models_dir.glob(f"*{model_type}*.h5"))
+    if model_files:
+        return sorted(model_files)[-1]  # Get the latest file
+
+    raise FileNotFoundError(f"No {model_type} model found in {models_dir}")
+
+
 # Load models and data ONCE at startup
 def load_models_and_data():
-    """Load models, data, and scaler"""
+    """Load models, data, and scaler with better error handling"""
     try:
-        # Load scaler
-        scaler_path = Path(__file__).parent.parent / "data/processed/scaler.pkl"
-        print(f"Loading scaler from: {scaler_path}")
-        scaler = joblib.load(scaler_path)
+        # Load scaler and test data from the correct directory
+        processed_dir = project_root / "data" / "processed"
+        if not processed_dir.exists():
+            processed_dir = project_root / "dd"  # Try alternative directory
 
-        # Load test data
-        X_test_path = Path(__file__).parent.parent / "data/processed/X_test.npy"
-        y_test_path = Path(__file__).parent.parent / "data/processed/y_test.npy"
-        print(f"Loading X_test from: {X_test_path}")
-        print(f"Loading y_test from: {y_test_path}")
+        print(f"Looking for data in: {processed_dir}")
+
+        scaler_path = processed_dir / "scaler.pkl"
+        X_test_path = processed_dir / "X_test.npy"
+        y_test_path = processed_dir / "y_test.npy"
+
+        # Load data files with error checking
+        if not all(p.exists() for p in [scaler_path, X_test_path, y_test_path]):
+            raise FileNotFoundError(f"Missing data files in {processed_dir}")
+
+        print("Loading data files...")
+        scaler = joblib.load(scaler_path)
         X_test = np.load(X_test_path)
         y_test = np.load(y_test_path)
 
-        # Load models
-        transformer_path = Path(__file__).parent.parent / "models/transformer_model"
-        lstm_path = Path(__file__).parent.parent / "models/lstm_model"
-        print(f"Loading Transformer from: {transformer_path}")
-        print(f"Loading LSTM from: {lstm_path}")
-        transformer = tf.keras.models.load_model(transformer_path)
-        lstm = tf.keras.models.load_model(lstm_path)
+        # Find and load models with custom loader
+        print("Loading models...")
+        transformer_path = find_model_file("transformer")
+        lstm_path = find_model_file("lstm")
+
+        print(f"Found Transformer at: {transformer_path}")
+        print(f"Found LSTM at: {lstm_path}")
+
+        # Load models with error handling
+        try:
+            transformer = tf.keras.models.load_model(str(transformer_path))
+            lstm = tf.keras.models.load_model(str(lstm_path))
+        except Exception as e:
+            print(f"Error loading models: {e}")
+            # Try loading with custom_objects if needed
+            custom_objects = {
+                "RootMeanSquaredError": tf.keras.metrics.RootMeanSquaredError
+            }
+            transformer = tf.keras.models.load_model(
+                str(transformer_path), custom_objects=custom_objects
+            )
+            lstm = tf.keras.models.load_model(
+                str(lstm_path), custom_objects=custom_objects
+            )
 
         # Generate predictions
-        transformer_pred = scaler.inverse_transform(transformer.predict(X_test))
-        lstm_pred = scaler.inverse_transform(lstm.predict(X_test.reshape(-1, 5, 1)))
+        print("Generating predictions...")
+        transformer_pred = transformer.predict(X_test)
+        lstm_pred = lstm.predict(X_test.reshape(-1, 5, 1))
+
+        # Inverse transform predictions
+        transformer_pred = scaler.inverse_transform(transformer_pred)
+        lstm_pred = scaler.inverse_transform(lstm_pred)
         y_true = scaler.inverse_transform(y_test)
 
-        # Create a datetime index for the data
+        # Create datetime index
         dates = pd.date_range(start="2023-01-01", periods=len(y_true), freq="h")
         y_true = pd.Series(y_true.flatten(), index=dates)
         transformer_pred = pd.Series(transformer_pred.flatten(), index=dates)
         lstm_pred = pd.Series(lstm_pred.flatten(), index=dates)
 
-        print("Data loaded successfully!")
+        print("✓ Data loaded successfully!")
         return y_true, transformer_pred, lstm_pred
+
     except Exception as e:
         print(f"Error loading data: {e}")
         raise
