@@ -30,14 +30,18 @@ You can check the white preprint paper here:
 ## Results
 
 Evaluation Metrics:
-Model        | RMSE     | nRMSE    | MAE      | MASE    
--------------------------------------------------------
-Transformer  | 12.40    | 0.0902   | 7.41     | 0.16    
-LSTM         | 15.54    | 0.1131   | 10.04    | 0.21 
+| Model                 | RMSE  | nRMSE (%) | MAE   | MASE  |
+|-----------------------|-------|-----------|-------|-------|
+| **Transformer**       | 12.40 | 9.02      | 7.41  | 0.16  |
+| **LSTM**              | 15.54 | 11.31     | 10.04 | 0.21  |
+| **ARIMA**             | 18.09 | 13.45     | 16.12 | 0.35  |
+| **Exp. Smoothing**    | 45.90 | 25.12     | 35.56 | 0.75  |
+| **Persistence**       | 42.85 | 24.45     | 33.07 | 0.70  | 
 
-<img src="visualization\Model_Performance_Comparison.png" alt="Model Performance Comparison" width="600"/>
+<div align="center">
+  <img src="visualization\Model_Performance_Comparison.png" alt="Model Performance Comparison" width="800"/>
+</div>
 
-Other models were developed on R and not added to this repository.
 ---
 
 ## Interactive Visualizations
@@ -86,12 +90,25 @@ The project includes an interactive dashboard built with **Dash** and **Plotly**
 
 Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050) to view the interactive dashboard.
 
-Here's a quick demo of the GHI Forecasting Dashboard:
+## Dashboard
 
-<video width="600" controls>
-  <source src="visualization\Dash-Preview.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+### Quick Preview
+<div align="center">
+  <img src="visualization/Dash-Preview.gif" alt="Dashboard Demo" width="800"/>
+</div>
+
+### Full Video Demonstration
+<div align="center">
+  <video width="800" controls>
+    <source src="visualization/Dash-Preview.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+Alternatively, you can:
+- [Download the demo video](visualization/Dash-Preview.mp4)
+
+> **Note:** The dashboard provides an interactive interface for comparing model predictions and analyzing performance metrics in real-time.
 
 
 ## Contributing
