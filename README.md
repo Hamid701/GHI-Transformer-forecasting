@@ -94,8 +94,12 @@ The training history of the Transformer and LSTM models is shown below. Notice h
 ---
 
 ## Data Flow Diagram
+The diagram below illustrates our ML pipeline architecture for processing GHI data:
 
-<img src="visualization/data_flow.png" alt="Data flow" width="300" height="500"/>
+<div align="center">
+  <img src="visualization\data_flow.png" alt="Data flow" width="70%"/>
+</div>
+
 
 --- 
 ## Results and Performance
@@ -185,7 +189,7 @@ Contributions are welcome! Please follow these steps:
 
 ## Acknowledgments
 
-This project builds on the groundbreaking work of Vaswani et al. in their paper **"Attention is All You Need"** . Special thanks to the **Copernicus Atmosphere Monitoring Service (CAMS)** for providing the dataset.
+This project builds on the groundbreaking work of Vaswani et al. in their paper **"Attention is All You Need"**. Special thanks to the **Copernicus Atmosphere Monitoring Service (CAMS)** for providing the dataset.
 
 ## License
 
