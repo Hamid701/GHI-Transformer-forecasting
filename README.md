@@ -1,9 +1,20 @@
-# GHI Transformer Forecasting
+# Revolutionizing Solar Energy Forecasting with Transformer-Based Models
 
 ## Overview
-Due to global warming, the world is seeking to use more renewable energy. In this study, we focus on solar energy. The integration of solar energy into electricity networks requires reliable forecast information of solar resources enabling it to quantify the available energy and allowing it to optimally manage the transition between intermittent and conventional energies. Recurrent Neural Networks (RNN) powered with Long Short-Term Memory (LSTM) units, and convolutional Neural Networks (CNN) have achieved state of the art in Photovoltaic output and solar radiation forecasting tasks. But these recurrent models face the parallelization problem during training because of their sequential nature, which holds problems memorizing long-term dependencies. To solve this problem, for the first time, we introduce a novel approach for Global Horizontal radiation (GHI) forecasting, which is based on the multi-head attention mechanism used recently in language translation tasks. This approach works by using self-attention mechanisms to learn long and short-term dependencies from time series data in a parallel mode. Using hourly GHI data in different regions, we demonstrate that the forecasting results for different horizons produced by our approach show significant performance improvements over existing benchmark models.
-## Objectif
-This study implements advanced time series forecasting models to predict **Global Horizontal Irradiance (GHI)** using
+As the world grapples with the challenges of global warming, renewable energy sources like solar power are becoming increasingly critical. However, integrating solar energy into electricity grids requires **accurate forecasting** of solar resources to balance supply and demand efficiently. Traditional forecasting models, such as ARIMA and LSTM, have shown promise but face limitations in handling long-term dependencies and computational efficiency.
+
+In this project, I introduce a **novel Transformer-based approach** for **Global Horizontal Irradiance (GHI)** forecasting. By leveraging the **multi-head attention mechanism**, this model eliminates the sequential training bottleneck of recurrent models, enabling parallel processing and significantly improving both accuracy and training speed. The results demonstrate a **20% reduction in Root Mean Squared Error (RMSE)** compared to **LSTM models**, making it a game-changer for solar energy forecasting.
+
+### Why This Project Matters
+Why This Project Matters
+Solar energy is inherently intermittent due to its dependence on weather conditions. Accurate GHI forecasts enable:
+
+- **Optimized grid management** : Better integration of solar energy into existing grids.
+- **Reduced operational costs** : Minimizing reliance on backup power sources.
+- **Improved energy planning** : Enhancing decision-making for energy storage and distribution.
+
+### Objectif
+This study implements advanced time series forecasting models to predict **(GHI)** using hourly
 historical data. The implementation includes state-of-the-art models such as **Transformer** and **LSTM**,
 which focus on parallelization and handling long-term dependencies in time series data.
 
@@ -16,9 +27,69 @@ You can check the white preprint paper here:
 
 ---
 
-## Models Implemented
-- **Transformer**: A multi-head attention-based model for parallelized time series forecasting.
-- **LSTM (Long Short-Term Memory)**: A recurrent neural network designed to capture long-term dependencies.
+## Key Features of the Project
+
+### 1. Transformer-Based Architecture
+The Transformer model uses a multi-head attention mechanism to capture both short-term and long-term dependencies in time series data. Unlike recurrent models, it processes all time steps simultaneously, enabling faster training and better generalization.
+
+### 2. Interactive Dashboard
+To make the model accessible and actionable, I developed an interactive dashboard using Dash and Plotly . Key features include:
+
+- **Model comparison** : Compare predictions from Transformer and LSTM models.
+- **Real-time metrics** : Visualize RMSE, nRMSE, MAE, and MASE for selected models.
+- **Time range slider** : Focus on specific time periods for detailed analysis.
+- **Download functionality** : Export prediction data as ```.csv``` files for further use.
+  
+### 3. Advanced Hyperparameter Optimization
+Using state-of-the-art techniques like the Tree-Structured Parzen Estimator (TPE) algorithm, I optimized hyperparameters for both Transformer and LSTM models, ensuring optimal performance while minimizing computational overhead.
+
+---
+
+## Methodology
+
+### Data Source
+The dataset consists of **hourly GHI** from 2006 to 2015 for Rabat, Morocco (33.97°N, -6.85°E), provided by the **Copernicus Atmosphere Monitoring Service (CAMS)** . The data was preprocessed using a **sliding window approach** to generate labeled input-output pairs for supervised learning.
+
+Below is a visualization of the hourly Global Horizontal Irradiance (GHI) data and it's hourly distribution for the site Rabat, highlighting its variability over time.
+<div align="center">
+  <img src="visualization\ghi_vs_time.png" alt="Time Series Visualization" width="45%">
+  <img src="visualization\GHI_Distribution_by_Hour.png" alt="GHI Distribution by Hour" width="45%"/>
+  <img src="visualization\Average_GHI_by_Month.png" alt="Average GHI by Month" width="45%">
+  <img src="visualization\GHI_Distribution_by_Season.png" alt="GHI Distribution by Season" width="45%"/>
+</div>
+
+1. **Daily Pattern**:
+   - Clear diurnal cycle with peak values during mid-day.
+   - Zero values during night hours.
+
+2. **Seasonal Variation**:
+   - Higher GHI values during the summer months.
+   - Lower values during winter months.
+   - Significant variation in day length across seasons.
+     
+### Model Design
+
+The Transformer model uses a multi-head attention mechanism to capture both short-term and long-term dependencies in the data. Below is a simplified diagram of the architecture.
+
+- **Input Embedding**: Maps the time series into a high-dimensional space.
+- **Positional Encoding**: Encodes temporal order using sinusoidal functions.
+- **Encoder Layers**: Four stacked encoder layers with multi-head self-attention and feed-forward networks.
+- **Linear Layer**: Projects the final representation into a scalar value for GHI prediction.
+
+<div align="center">
+  <img src="visualization\Transformer_str.png" alt="Transformer architecture for forecasting one hour ahead of global horizontal irradiance (GHI)." width="700"/>
+</div>
+
+### Training Process
+- **Transformer** : Achieved rapid convergence with minimal fluctuations in loss.
+- **LSTM** : Showed slower convergence and higher error rates compared to the Transformer.
+
+The training history of the Transformer and LSTM models is shown below. Notice how the Transformer converges faster and achieves lower validation errors.
+
+<div align="center">
+  <img src="visualization\Transformer_training_history_20250211_124625.png" alt="Transformer Training History" width="45%"/>
+  <img src="visualization\LSTM_training_history_20250211_124625.png" alt="LSTM Training History" width="45%"/>
+</div>
 
 ---
 
@@ -27,9 +98,11 @@ You can check the white preprint paper here:
 <img src="visualization/data_flow.png" alt="Data flow" width="300" height="500"/>
 
 --- 
-## Results
+## Results and Performance
+The Transformer model outperformed all benchmark models across key metrics:
 
 Evaluation Metrics:
+
 | Model                 | RMSE  | nRMSE (%) | MAE   | MASE  |
 |-----------------------|-------|-----------|-------|-------|
 | **Transformer**       | 12.40 | 9.02      | 7.41  | 0.16  |
@@ -39,59 +112,21 @@ Evaluation Metrics:
 | **Persistence**       | 42.85 | 24.45     | 33.07 | 0.70  | 
 
 <div align="center">
-  <img src="visualization\Model_Performance_Comparison.png" alt="Model Performance Comparison" width="800"/>
+  <img src="visualization\Model_Performance_Comparison.png" alt="Model Performance Comparison" width="70%"/>
 </div>
+
+These results highlight the Transformer's superior ability to capture complex temporal patterns, making it ideal for solar energy forecasting.
 
 ---
 
 ## Interactive Visualizations
-The project includes an interactive dashboard built with **Dash** and **Plotly**. Key features:
+The interactive dashboard provides an intuitive interface for exploring the model's predictions and performance metrics. Here’s a quick preview:
+
 - **Model Comparison**: Compare predictions from Transformer and LSTM.
 - **Time Range Slider**: Focus on specific time periods.
 - **Metrics Display**: Real-time RMSE, nRMSE, MAE and MASE for selected models.
 - **Download**: Download the predictions to your local device as .csv file.
-
----
-
-## Installation
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/Hamid701/GHI-Transformer-forecasting.git
-    cd GHI-Transformer-forecasting
-    ```
-
-2. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
----
-
-## Usage
-
-1. Run the the script:
-    ```bash
-    python src/main.py
-    ```
-
-2. Outcome:
-
-- Evaluate the models on the test set.
-
-- Save metrics to [metrics_20250211_124625.txt](results\metrics_20250211_124625.txt).
-
-- Generate an interactive plot in [forecast_plot_20250211_124625.html](visualization\forecast_plot_20250211_124625.html).
-
-3. Run the dashboard locally:
-    ```bash
-    python src/dashboard.py
-    ```
-
-Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050) to view the interactive dashboard.
-
-## Dashboard
-
+- 
 ### Quick Preview
 <div align="center">
   <img src="visualization/Dash-Preview.gif" alt="Dashboard Demo" width="800"/>
@@ -108,8 +143,32 @@ Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050)
 Alternatively, you can:
 - [Download the demo video](visualization/Dash-Preview.mp4)
 
-> **Note:** The dashboard provides an interactive interface for comparing model predictions and analyzing performance metrics in real-time.
+---
 
+## Installation and Usage
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Hamid701/GHI-Transformer-forecasting.git
+    cd GHI-Transformer-forecasting
+    ```
+
+2. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Run the the script:
+    ```bash
+    python src/main.py
+    ```
+    
+4. Run the dashboard locally:
+    ```bash
+    python src/dashboard.py
+    ```
+
+Open your browser and navigate to [http://127.0.0.1:8050](http://127.0.0.1:8050) to view the interactive dashboard.
 
 ## Contributing
 
@@ -126,10 +185,14 @@ Contributions are welcome! Please follow these steps:
 
 ## Acknowledgments
 
-The Transformer architecture is based on the paper "Attention is All You Need".
-
-The dataset is provided by the Copernicus Atmosphere Monitoring Service (CAMS).
+This project builds on the groundbreaking work of Vaswani et al. in their paper **"Attention is All You Need"** . Special thanks to the **Copernicus Atmosphere Monitoring Service (CAMS)** for providing the dataset.
 
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Contact
+For questions or collaborations, feel free to reach out:
+
+Email: ettayyebi.hamid@gmail.com
+LinkedIn: linkedin.com/in/ett-hamid
